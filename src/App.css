@@ -15,15 +15,13 @@ h1 {
 .article {
   margin-bottom: 20px;
   width: 100%;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
   padding: 15px;
-  background: #eee;
   transition-duration: 0.5s;
 }
 
 .article:hover {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  background: #fff
 }
 
 #a {

@@ -1,0 +1,28 @@
+.info {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  font-size: 20px
+}
+
+.articless {
+  text-align: center;
+  justify-content: center;
+}
+
+.articlee {
+  margin-bottom: 20px;
+  width: 100%;
+  background: #eee;
+  border: 1px solid black;
+  padding: 15px;
+  transition-duration: 0.5s;
+}
+
+@media(min-width: 800px) {
+  .articless {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-column-gap: 1em;
+  }
+}

@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import avatar from '../avatar.jpg';
+import './style/MyArticles.css';
 
 class MyArticles extends React.Component {
   constructor(props) {
@@ -11,7 +13,7 @@ class MyArticles extends React.Component {
 
   componentDidMount() {
     if(!localStorage.getItem('username')) {
-      window.location = 'http://localhost:3000/login';
+      window.location = 'https://serene-bayou-80098.herokuapp.com//login';
     }
     fetch('https://ancient-wave-97718.herokuapp.com/article/' + localStorage.getItem('username'))
     .then(res => res.json())
@@ -21,7 +23,7 @@ class MyArticles extends React.Component {
 
   render() {
     const articles = this.state.articles.map((article, i) => (
-      <div id={i} className="article">
+      <div id={i} className="articlee">
         <h2 id={i}>{article.title}</h2>
         <h5 id={i}>{article.body}</h5>
         <Link to={`/delete/${article._id}`}>
@@ -45,11 +47,16 @@ class MyArticles extends React.Component {
           </Link>
         </ul>
         <div className="container">
-          <h1>User: {localStorage.getItem('username')}&#128520;</h1>
-          <h1>Posts: {this.state.articles.length}</h1>
-          <div className="articles">
-            {articles}
+          <div className="info">
+            <img style={{height: "130px"}} src={avatar} />
+            <div>
+              <h3 style={{width: "100%"}}>User: {localStorage.getItem('username')}&#128520;</h3>
+              <h3 style={{width: "100%"}}>Posts: {this.state.articles.length}</h3>
+            </div>
           </div>
+          <div className="articless">
+              {articles}
+            </div>
         </div>
       </div>
     );
