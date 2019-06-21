@@ -17,7 +17,7 @@ export default class Login extends React.Component {
         const members = text;
         members.forEach((member, i) => {
           if(member.username === username && member.password === password) {
-            window.location = 'https://serene-bayou-80098.herokuapp.com//articles';
+            window.location = 'https://serene-bayou-80098.herokuapp.com/articles';
             localStorage.setItem('username', username);
           }
         });

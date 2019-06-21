@@ -13,7 +13,7 @@ class MyArticles extends React.Component {
 
   componentDidMount() {
     if(!localStorage.getItem('username')) {
-      window.location = 'https://serene-bayou-80098.herokuapp.com//login';
+      window.location = 'https://serene-bayou-80098.herokuapp.com/login';
     }
     fetch('https://ancient-wave-97718.herokuapp.com/article/' + localStorage.getItem('username'))
     .then(res => res.json())
