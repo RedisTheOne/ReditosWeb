@@ -7,15 +7,32 @@ export default class SingUp extends React.Component {
   }
   
   click = () => {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    if(username !== "" && password !== "") {
-      fetch(`https://ancient-wave-97718.herokuapp.com/members/add/${username}/${password}`, {
-        method: "POST",
-      }).catch(err => alert(err));
-      localStorage.setItem('username', username);
-      window.location = 'http://localhost:3000/articles';  
-    }
+    fetch('https://ancient-wave-97718.herokuapp.com/members')
+      .then((res) => res.json())
+      .then((text) => {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        let check = true;
+        text.forEach((t) => {
+          if(username === t.username) {
+            check = false;
+          }
+        });
+        if(check) {
+          if(username !== "" && password !== "") {
+            fetch(`https://ancient-wave-97718.herokuapp.com/members/add/${username}/${password}`, {
+              method: "POST",
+            }).then(res => {
+              localStorage.setItem('username', username);
+            window.location = 'https://serene-bayou-80098.herokuapp.com/articles';  
+            })
+            .catch(err => alert(err));
+          }
+        } else {
+          alert('Username already exist!');
+        }
+      })
+      .catch((err) => alert(err));
   }
   render() {
 
@@ -23,6 +40,7 @@ export default class SingUp extends React.Component {
       <div>
         <div className="container" style={{alignContent: 'center', textAlign: 'center'}}>
           <img style={{width: "40%"}} src={logo} />
+          <h1>Sign Up</h1>
           <form className="form-group">          
             <label style={{float: "left"}}>Username</label>
             <input id="username" type="text" className="form-control"></input>

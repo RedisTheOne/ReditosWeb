@@ -39,6 +39,9 @@ class Articles extends React.Component {
           <Link to={'/myarticles'}>
             <li><a style={{color: "white"}}>MyArticles</a></li>
           </Link>
+          <Link to={'/search'}>
+            <li><a style={{color: "white"}}>Search</a></li>
+          </Link>
           <Link to={'/login'}>
             <li><a style={{color: "white"}}>LogOut</a></li>
           </Link>

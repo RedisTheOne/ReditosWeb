@@ -18,6 +18,7 @@ export default class Login extends React.Component {
         members.forEach((member, i) => {
           if(member.username === username && member.password === password) {
             window.location = 'https://serene-bayou-80098.herokuapp.com/articles';
+            // https://serene-bayou-80098.herokuapp.com/
             localStorage.setItem('username', username);
           }
         });
@@ -31,6 +32,7 @@ export default class Login extends React.Component {
       <div className="container">
         <div style={{alignContent: 'center', textAlign: 'center'}}>
           <img style={{width: "40%"}} src={logo} />
+          <h1>Log In</h1>
           <form className="form-group">          
             <label style={{float: "left"}}>Username</label>
             <input id="username" type="text" className="form-control"></input>
@@ -40,9 +42,9 @@ export default class Login extends React.Component {
           </form>
           <button className="btn btn-primary" style={{width: "100%"}} onClick={this.click}>Submit</button>
         </div>
-        {/* <Link to="/singup">
+        <Link to="/singup">
           <a>Don't have a account? Sing up for free!</a>
-        </Link> */}
+        </Link>
       </div>
     );
   }

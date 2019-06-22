@@ -19,6 +19,14 @@
   transition-duration: 0.5s;
 }
 
+@media(max-width: 800px) {
+  .articlee {
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+  }
+}
+
 @media(min-width: 800px) {
   .articless {
     display: grid;

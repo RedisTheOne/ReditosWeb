@@ -30,6 +30,9 @@ class App extends React.Component {
           <Link to={'/articles'}>
             <li><a style={{color: "white"}}>Articles</a></li>
           </Link>
+          <Link to={'/search'}>
+            <li><a style={{color: "white"}}>Search</a></li>
+          </Link>
           <Link to={'/login'}>
             <li><a style={{color: "white"}}>LogOut</a></li>
           </Link>
@@ -38,7 +41,7 @@ class App extends React.Component {
           <h1>Add</h1>
           <div className="form-group">
             <label>Title</label>
-            <input id="title" type="text" className="form-control" />
+            <input data-emoji-input="unicode" id="title" type="text" className="form-control" />
             <label>Body</label>
             <textarea id="body" type="text" className="form-control" />
             <button className="btn btn-primary" style={{width: "100%", marginTop: "20px"}} onClick={this.add}>Add</button>

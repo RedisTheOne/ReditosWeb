@@ -13,7 +13,7 @@ class MyArticles extends React.Component {
 
   componentDidMount() {
     if(!localStorage.getItem('username')) {
-      window.location = 'https://serene-bayou-80098.herokuapp.com/login';
+      window.location = 'http://localhost:3000/login';
     }
     fetch('https://ancient-wave-97718.herokuapp.com/article/' + localStorage.getItem('username'))
     .then(res => res.json())
@@ -24,11 +24,13 @@ class MyArticles extends React.Component {
   render() {
     const articles = this.state.articles.map((article, i) => (
       <div id={i} className="articlee">
+        <Link to={`/delete/${article._id}`}>
+          <button type="button" class="close" aria-label="Close" style={{float: "right"}}>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </Link>
         <h2 id={i}>{article.title}</h2>
         <h5 id={i}>{article.body}</h5>
-        <Link to={`/delete/${article._id}`}>
-          <button className="btn btn-danger" style={{width: "70%"}}>Delete</button>
-        </Link>
       </div>
     ));
     return (
@@ -40,11 +42,13 @@ class MyArticles extends React.Component {
           <Link to={'/add'}>
             <li><a style={{color: "white"}}>Add</a></li>
           </Link>
+          <Link to={'/search'}>
+            <li><a style={{color: "white"}}>Search</a></li>
+          </Link>
           <Link to={'/login'}>
             <li><a style={{color: "white"}}>LogOut</a></li>
           </Link>
-          <Link to={'/myarticles'}>
-          </Link>
+          
         </ul>
         <div className="container">
           <div className="info">

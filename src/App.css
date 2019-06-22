@@ -49,16 +49,13 @@ h1 {
 
 .search {
   width: 100%;
-  height: 100vh;
-  background: url("searchBackground.jpg");
+
   background-position: center;
   background-size: cover;
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  color: white;
-  overflow: hidden;
   align-items: center
 }
 
