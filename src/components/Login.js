@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import logo from './logo.png';
+import {Redirect} from 'react-router-dom';
 
 export default class Login extends React.Component {
   componentDidMount() {
@@ -17,8 +18,7 @@ export default class Login extends React.Component {
         const members = text;
         members.forEach((member, i) => {
           if(member.username === username && member.password === password) {
-            window.location = 'https://serene-bayou-80098.herokuapp.com/articles';
-            // https://serene-bayou-80098.herokuapp.com/
+            window.location = 'http://localhost:3000/articles';
             localStorage.setItem('username', username);
           }
         });

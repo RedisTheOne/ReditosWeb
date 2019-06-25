@@ -8,16 +8,14 @@ h1 {
 }
 
 .articles {
-  text-align: center;
   width: 100%;
+  margin-top: 20px
 }
 
 .article {
   margin-bottom: 20px;
   width: 100%;
-  border-bottom: 1px solid black;
   padding: 15px;
-  transition-duration: 0.5s;
 }
 
 .article:hover {
@@ -49,14 +47,7 @@ h1 {
 
 .search {
   width: 100%;
-
-  background-position: center;
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
   text-align: center;
-  justify-content: center;
-  align-items: center
 }
 
 a {text-decoration: none;}
@@ -73,19 +64,21 @@ a {text-decoration: none;}
   text-decoration: none;
 }
 
-ul {
+.nav {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: #333;
+  position: fixed;
+  width: 100%;
 }
 
-li {
+.nav li {
   float: left;
 }
 
-li a {
+.nav li a {
   display: block;
   color: white;
   text-align: center;
@@ -94,7 +87,7 @@ li a {
 }
 
 /* Change the link color to #111 (black) on hover */
-li a:hover {
+.nav li a:hover {
   background-color: #111;
   color: white;
   text-decoration: none;

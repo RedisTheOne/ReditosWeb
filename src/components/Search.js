@@ -11,11 +11,11 @@ export default class Search extends React.Component {
 
   change = (e) => {
     if(e.target.value !== "") {
-      document.querySelector('.users').innerHTML = "";
+      document.querySelector('.list-group').innerHTML = "";
       this.state.members.forEach((member) => {
         if(member.username.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1) {
-          document.querySelector('.users').innerHTML += `
-          <p>${member.username}</p>
+          document.querySelector('.list-group').innerHTML += `
+          <a href="/search/${member.username}" style="color: #333; text-decoration: none"><li class="list-group-item">${member.username}</li></a>
           `;
         } else {
           console.log(false);
@@ -36,7 +36,7 @@ export default class Search extends React.Component {
   render() {
     return(
       <div>
-        <ul>
+        <ul className = "nav">
           <Link to={'/articles'}>
             <li><a style={{color: "white"}}>Articles</a></li>
           </Link>
@@ -47,12 +47,19 @@ export default class Search extends React.Component {
             <li><a style={{color: "white"}}>LogOut</a></li>
           </Link>
         </ul>
-        <div className="search">
-          <h2>Search your favourite user &#128540;</h2>
-          <input onChange={this.change} style={{width: "80%", background: 'transparent', border: "1px solid black", borderRadius: "25px", padding: "5px"}} />
-          <br />
-          <div className="users">
+        <div className="container">
+        
+        <div className="search" style={{paddingTop: "30px"}}>
+          <div style={{marginTop: "40px"}}>
+            <h2>Search your favourite user &#128540;</h2>
+            <input onChange={this.change} style={{width: "100%", background: 'transparent', border: "1px solid black", borderRadius: "25px", padding: "5px"}} />
+            <br />
+            <div className="users" style={{width: "100%"}}>
+              <ul className="list-group" style={{width: "100%"}}>
+              </ul>
+            </div>
           </div>
+        </div>
         </div>
       </div>
     );

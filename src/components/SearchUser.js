@@ -3,12 +3,13 @@ import {Link} from 'react-router-dom';
 import avatar from '../avatar.jpg';
 import './style/MyArticles.css';
 
-class MyArticles extends React.Component {
+class SearchUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       articles: [],
-      member: {following: []}
+      username: props.match.params.username,
+      member: {}
     }
   }
 
@@ -16,26 +17,19 @@ class MyArticles extends React.Component {
     if(!localStorage.getItem('username')) {
       window.location = 'http://localhost:3000/login';
     }
-    //Fetch Articles
-    fetch('https://ancient-wave-97718.herokuapp.com/article/' + localStorage.getItem('username'))
+    fetch('https://ancient-wave-97718.herokuapp.com/article/' + this.state.username)
     .then(res => res.json())
     .then(text => this.setState({articles: text.reverse()}))
     .catch(err => console.log(err));
-    //Fetch Member
-    fetch('https://ancient-wave-97718.herokuapp.com/members/' + localStorage.getItem('username'))
+    fetch('https://ancient-wave-97718.herokuapp.com/member/' + this.state.username)
     .then(res => res.json())
-    .then(text => this.setState({member: text}))
+    .then(text => this.setState({articles: text.reverse()}))
     .catch(err => console.log(err));
   }
 
   render() {
     const articles = this.state.articles.map((article, i) => (
       <div id={i} className="articlee">
-        <Link to={`/delete/${article._id}`}>
-          <button type="button" class="close" aria-label="Close" style={{float: "right"}}>
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </Link>
         <h2 id={i}>{article.title}</h2>
         <h5 id={i}>{article.body}</h5>
       </div>
@@ -61,9 +55,9 @@ class MyArticles extends React.Component {
           <div className="info">
             <img style={{height: "150px"}} src={avatar} />
             <div>
-              <h3 style={{width: "100%"}}>User: {this.state.member.username}&#128520;</h3>
+              <h3 style={{width: "100%"}}>User: {this.state.username}&#128520;</h3>
               <h3 style={{width: "100%"}}>Posts: {this.state.articles.length}</h3>
-              <h3 style={{width: "100%"}}>Following: {this.state.member.following.length}</h3>
+              <button className="btn btn-secondary" style={{width: "100%"}}>Follow</button>
             </div>
           </div>
           <div className="articless">
@@ -75,4 +69,4 @@ class MyArticles extends React.Component {
   }
 }
 
-export default MyArticles;
+export default SearchUser;

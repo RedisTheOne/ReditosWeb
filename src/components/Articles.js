@@ -13,26 +13,31 @@ class Articles extends React.Component {
     if(!localStorage.getItem('username')) {
       window.location = 'https://serene-bayou-80098.herokuapp.com/login';
     }
+    document.querySelector('.articles').innerHTML = "<h2>Loading...</h2>";
     fetch('https://ancient-wave-97718.herokuapp.com/articles')
     .then(res => res.json())
-    .then(text => this.setState({articles: text.reverse()}))
+    .then(text => {
+      document.querySelector('.articles').innerHTML = "";
+      this.setState({articles: text.reverse()});
+    })
     .catch(err => console.log(err));
   }
 
   render() {
     const articles = this.state.articles.map((article, i) => (
       <div id={i} className="article">
+        <a style={{textDecoration: "none"}} href={"/search/" + article.author}>
+          <button className="btn btn-secondary" style={{width: "100%", textAlign: "left"}}>
+            {article.author}
+          </button> 
+        </a>
         <h2 id={i}>{article.title}</h2>
         <h5 id={i}>{article.body}</h5>
-        <strong id={i}>By: {article.author}</strong>
-        <br></br>
-        <br />
-
       </div>
     ));
     return (
       <div>
-        <ul>
+        <ul className = "nav">
           <Link to={'/add'}>
             <li><a style={{color: "white"}}>Add</a></li>
           </Link>
@@ -46,8 +51,7 @@ class Articles extends React.Component {
             <li><a style={{color: "white"}}>LogOut</a></li>
           </Link>
         </ul>
-        <div className="container">
-          <h1>Articles</h1>
+        <div className="container" style={{paddingTop: "50px"}}>
           <div className="articles">
             {articles}
           </div>

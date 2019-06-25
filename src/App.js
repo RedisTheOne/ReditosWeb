@@ -6,6 +6,7 @@ import Add from './components/Add';
 import Delete from './components/Delete';
 import Login from './components/Login';
 import SingUp from './components/SingUp';
+import SearchUser from './components/SearchUser';
 import MyArticles from './components/MyArticles';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import Home from './components/Home';
@@ -27,6 +28,7 @@ function App() {
           <Route path='/myarticles' exact component={MyArticles} />
           <Route path='/search' exact component={Search} />
           <Route path='/singup' exact component={SingUp} />
+          <Route path='/search/:username' exact component={SearchUser} />
         </Switch>
       </Router>
     </div>

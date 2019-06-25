@@ -24,7 +24,7 @@ export default class SingUp extends React.Component {
               method: "POST",
             }).then(res => {
               localStorage.setItem('username', username);
-            window.location = 'https://serene-bayou-80098.herokuapp.com/articles';  
+            window.location = 'http://localhost:3000/articles';  
             })
             .catch(err => alert(err));
           }
